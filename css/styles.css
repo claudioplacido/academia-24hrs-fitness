@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+
 
 :root {
     --color-dark: #1C1C1C;
@@ -79,6 +79,7 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+  aspect-ratio: auto;
 }
 
 button {
@@ -511,11 +512,12 @@ button {
   border-radius: var(--radius-lg);
   overflow: hidden;
   position: relative;
+  aspect-ratio: 4 / 3;
 }
 
 .sobre-image img {
   width: 100%;
-  height: 400px;
+  height: 100%;
   object-fit: cover;
   transition: transform var(--transition-slow);
 }
@@ -601,7 +603,7 @@ button {
 
 .servico-image {
   position: relative;
-  height: 200px;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
 }
 
@@ -659,9 +661,9 @@ button {
   position: relative;
   border-radius: var(--radius-md);
   overflow: hidden;
-  height: 320px;
+  aspect-ratio: 3 / 4;
   cursor: pointer;
-  transition: all var(--transition-base);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 
 .aula-card:hover {
@@ -1163,7 +1165,9 @@ button {
 .fade-in {
   opacity: 0;
   transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: opacity, transform;
 }
 
 .fade-in.visible {
@@ -1174,7 +1178,9 @@ button {
 .fade-in-left {
   opacity: 0;
   transform: translateX(-40px);
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: opacity, transform;
 }
 
 .fade-in-left.visible {
@@ -1185,7 +1191,9 @@ button {
 .fade-in-right {
   opacity: 0;
   transform: translateX(40px);
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: opacity, transform;
 }
 
 .fade-in-right.visible {
