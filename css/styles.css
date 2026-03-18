@@ -16,6 +16,10 @@
   font-display: swap;
 }
 
+h1, h2, h3 {
+    line-height: 1.2;
+}
+
 :root {
   --color-dark: #1C1C1C;
   --color-dark-lighter: #2A2A2A;
@@ -1136,12 +1140,14 @@ button {
   max-width: 300px;
 }
 
-.footer-col h4 {
-  font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--color-white);
-  margin-bottom: var(--space-md);
+.footer-col h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.1rem; 
+    font-weight: 700;
+    margin-bottom: var(--space-md); 
+    color: var(--color-white); 
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .footer-col a,
@@ -1169,23 +1175,23 @@ button {
 }
 
 #whatsapp-btn {
-  display: inline-flex !important;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: #128C7E !important;
-  color: #FFFFFF !important;
-  padding: 0.7rem 1.4rem;
-  border-radius: var(--radius-sm);
-  font-weight: 700;
-  margin-top: var(--space-xs);
-  transition: all var(--transition-base) !important;
+    background-color: var(--color-success) !important;
+    color: var(--color-white) !important;            
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
 }
 
 #whatsapp-btn:hover {
-  background-color: #075E54 !important;
-  color: #FFFFFF !important;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(18, 140, 126, 0.3);
+    background-color: #128C7E !important; 
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
 }
 
 #whatsapp-btn svg {
