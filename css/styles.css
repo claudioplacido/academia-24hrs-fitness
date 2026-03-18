@@ -1,7 +1,23 @@
 
 
+@font-face {
+  font-family: 'Outfit';
+  src: url('../assets/fonts/outfit-v15-latin-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../assets/fonts/inter-v20-latin-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-    --color-dark: #1C1C1C;
+  --color-dark: #1C1C1C;
   --color-dark-lighter: #2A2A2A;
   --color-dark-card: #242424;
   --color-gold: #F5B700;
@@ -13,7 +29,7 @@
   --color-gray-light: #CCCCCC;
   --color-success: #25D366;
 
-    --font-display: 'Outfit', sans-serif;
+  --font-display: 'Outfit', sans-serif;
   --font-body: 'Inter', sans-serif;
 
   --space-xs: 0.5rem;
@@ -104,7 +120,7 @@ button {
 .section-header h2 {
   font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 800;
+  font-weight: 700;
   color: var(--color-white);
   margin-bottom: var(--space-sm);
 }
@@ -136,7 +152,7 @@ button {
   padding: 1rem 2rem;
   border-radius: var(--radius-sm);
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1rem;
   letter-spacing: 0.5px;
   transition: all var(--transition-base);
@@ -218,7 +234,7 @@ button {
 .navbar-logo {
   font-family: var(--font-display);
   font-size: 1.6rem;
-  font-weight: 900;
+  font-weight: 700;
   color: var(--color-white);
   display: flex;
   align-items: center;
@@ -381,7 +397,7 @@ button {
 .hero-title {
   font-family: var(--font-display);
   font-size: clamp(2.5rem, 6vw, 4.5rem);
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1.1;
   margin-bottom: var(--space-md);
   color: var(--color-white);
@@ -422,7 +438,7 @@ button {
 .hero-stat-number {
   font-family: var(--font-display);
   font-size: 2.5rem;
-  font-weight: 900;
+  font-weight: 700;
   color: var(--color-gold);
 }
 
@@ -560,7 +576,7 @@ button {
 .sobre-content h2 {
   font-family: var(--font-display);
   font-size: clamp(2rem, 3vw, 2.5rem);
-  font-weight: 800;
+  font-weight: 700;
   margin-bottom: var(--space-md);
 }
 
@@ -836,7 +852,7 @@ button {
 .plano-price .amount {
   font-family: var(--font-display);
   font-size: 3.5rem;
-  font-weight: 900;
+  font-weight: 700;
   color: var(--color-white);
 }
 
@@ -1071,7 +1087,7 @@ button {
 .cta-content h2 {
   font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 900;
+  font-weight: 700;
   color: var(--color-white);
   margin-bottom: var(--space-md);
   line-height: 1.2;
@@ -1152,28 +1168,28 @@ button {
   flex-shrink: 0;
 }
 
-.footer-whatsapp {
+#whatsapp-btn {
   display: inline-flex !important;
   align-items: center;
   gap: 0.5rem;
-  background: var(--color-success);
-  color: var(--color-white) !important;
+  background-color: #128C7E !important;
+  color: #FFFFFF !important;
   padding: 0.7rem 1.4rem;
   border-radius: var(--radius-sm);
-  font-weight: 600;
+  font-weight: 700;
   margin-top: var(--space-xs);
   transition: all var(--transition-base) !important;
 }
 
-.footer-whatsapp:hover {
-  background: #1da851 !important;
-  color: var(--color-white) !important;
+#whatsapp-btn:hover {
+  background-color: #075E54 !important;
+  color: #FFFFFF !important;
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+  box-shadow: 0 4px 15px rgba(18, 140, 126, 0.3);
 }
 
-.footer-whatsapp svg {
-  stroke: var(--color-white);
+#whatsapp-btn svg {
+  stroke: #FFFFFF;
 }
 
 .footer-bottom {
