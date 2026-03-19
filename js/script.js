@@ -9,18 +9,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initNavbar() {
   const navbar = document.getElementById('navbar');
-  let lastScrollY = 0;
+  let isScrolled = false;
 
   function handleNavbarScroll() {
     const scrollY = window.scrollY;
 
-    if (scrollY > 50) {
+    if (scrollY > 50 && !isScrolled) {
       navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
+      isScrolled = true;
     }
-
-    lastScrollY = scrollY;
+    else if (scrollY <= 50 && isScrolled) {
+      navbar.classList.remove('scrolled');
+      isScrolled = false;
+    }
   }
 
   window.addEventListener('scroll', handleNavbarScroll, { passive: true });
@@ -39,7 +40,7 @@ function initMobileMenu() {
     document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
   });
 
-    menu.querySelectorAll('a').forEach(link => {
+  menu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       toggle.classList.remove('active');
       menu.classList.remove('active');
@@ -47,7 +48,7 @@ function initMobileMenu() {
     });
   });
 
-    document.addEventListener('click', (e) => {
+  document.addEventListener('click', (e) => {
     if (!menu.contains(e.target) && !toggle.contains(e.target)) {
       toggle.classList.remove('active');
       menu.classList.remove('active');
@@ -60,7 +61,7 @@ function initScrollAnimations() {
   const animatedElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right');
 
   if (!('IntersectionObserver' in window)) {
-        animatedElements.forEach(el => el.classList.add('visible'));
+    animatedElements.forEach(el => el.classList.add('visible'));
     return;
   }
 
@@ -68,7 +69,7 @@ function initScrollAnimations() {
     (entries) => {
       entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
-                    const delay = entry.target.dataset.delay || 0;
+          const delay = entry.target.dataset.delay || 0;
           setTimeout(() => {
             entry.target.classList.add('visible');
           }, delay);
@@ -82,7 +83,7 @@ function initScrollAnimations() {
     }
   );
 
-    const grids = document.querySelectorAll(
+  const grids = document.querySelectorAll(
     '.diferenciais-grid, .servicos-grid, .aulas-grid, .planos-grid'
   );
 
@@ -116,7 +117,7 @@ function initCarousel() {
     currentIndex = index;
     track.style.transform = `translateX(-${currentIndex * 100}%)`;
 
-        dots.forEach((dot, i) => {
+    dots.forEach((dot, i) => {
       dot.classList.toggle('active', i === currentIndex);
     });
   }
@@ -129,7 +130,7 @@ function initCarousel() {
     goToSlide(currentIndex - 1);
   }
 
-    function startAutoplay() {
+  function startAutoplay() {
     stopAutoplay();
     autoplayInterval = setInterval(nextSlide, 5000);
   }
@@ -141,9 +142,10 @@ function initCarousel() {
     }
   }
 
-    prevBtn.addEventListener('click', () => {
+  prevBtn.addEventListener('click', () => {
     prevSlide();
-    startAutoplay();   });
+    startAutoplay();
+  });
 
   nextBtn.addEventListener('click', () => {
     nextSlide();
@@ -158,7 +160,7 @@ function initCarousel() {
     });
   });
 
-    let touchStartX = 0;
+  let touchStartX = 0;
   let touchEndX = 0;
 
   track.addEventListener('touchstart', (e) => {
@@ -180,7 +182,7 @@ function initCarousel() {
     startAutoplay();
   }, { passive: true });
 
-    const carousel = document.getElementById('carousel');
+  const carousel = document.getElementById('carousel');
   if (carousel) {
     carousel.addEventListener('mouseenter', stopAutoplay);
     carousel.addEventListener('mouseleave', startAutoplay);
@@ -211,17 +213,17 @@ function initCountUp() {
 
 function animateCount(element) {
   const target = parseInt(element.dataset.count, 10);
-  const duration = 2000;   const startTime = performance.now();
+  const duration = 2000; const startTime = performance.now();
 
   function updateCount(currentTime) {
     const elapsed = currentTime - startTime;
     const progress = Math.min(elapsed / duration, 1);
 
-        const easedProgress = 1 - Math.pow(1 - progress, 3);
+    const easedProgress = 1 - Math.pow(1 - progress, 3);
 
     const currentValue = Math.floor(easedProgress * target);
 
-        if (target >= 1000) {
+    if (target >= 1000) {
       element.textContent = currentValue.toLocaleString('pt-BR') + '+';
     } else {
       element.textContent = currentValue + '+';
