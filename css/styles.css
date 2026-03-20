@@ -32,6 +32,9 @@ h1, h2, h3 {
   --color-gray: #999999;
   --color-gray-light: #CCCCCC;
   --color-success: #25D366;
+  --color-whatsapp: #25D366;
+  --color-whatsapp-hover: #128C7E;
+  --color-whatsapp-glow: rgba(37, 211, 102, 0.5);
 
   --font-display: 'Outfit', sans-serif;
   --font-body: 'Inter', sans-serif;
@@ -1175,64 +1178,68 @@ button {
 }
 
 .whatsapp-float {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    background-color: #1da851 !important; /* Verde WhatsApp otimizado para contraste 3:1 (WCAG AA) */
-    color: #FFFFFF !important;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    border: none;
-    text-decoration: none;
+  position: fixed;
+  width: 64px;
+  height: 64px;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: var(--color-whatsapp);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  text-decoration: none;
+  box-shadow: 0 4px 20px var(--color-whatsapp-glow);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .whatsapp-float:hover {
-    transform: scale(1.1) rotate(5deg);
-    background-color: #128C7E !important; /* Tom mais escuro no hover para profundidade */
-    box-shadow: 0 8px 25px rgba(29, 168, 81, 0.5);
+  background-color: var(--color-whatsapp-hover);
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.7);
 }
 
 .whatsapp-float svg {
-    width: 30px;
-    height: 30px;
-    fill: none;
-    stroke: #FFFFFF;
-    stroke-width: 2.5; 
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.whatsapp-float:hover svg {
-    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.4));
+  width: 32px;
+  height: 32px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 @media (max-width: 768px) {
-    .whatsapp-float {
-        bottom: 1.5rem;
-        right: 1.5rem;
-        width: 56px;
-        height: 56px;
-    }
-    
-    .whatsapp-float svg {
-        width: 30px;
-        height: 30px;
-    }
+  .whatsapp-float {
+    width: 56px;
+    height: 56px;
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+  
+  .whatsapp-float svg {
+    width: 28px;
+    height: 28px;
+  }
 }
 
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   padding-top: var(--space-lg);
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   color: var(--color-gray);
   font-size: 0.85rem;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.footer-bottom a {
+  color: var(--color-gray);
+  transition: color var(--transition-fast);
+}
+
+.footer-bottom a:hover {
+  color: var(--color-gold);
 }
 
 .fade-in {
@@ -1386,6 +1393,12 @@ button {
   .footer-col a,
   .footer-col p {
     justify-content: flex-start;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-xs);
   }
 }
 
