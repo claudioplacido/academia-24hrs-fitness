@@ -1,14 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
-  initNavbar();
+  // Fazemos o "cache" dos elementos principais logo no início 
+  // para evitar consultar o DOM repetidas vezes (Prevenção de Reflow Forçado)
+  const navbar = document.getElementById('navbar');
+
+  initNavbar(navbar);
   initMobileMenu();
   initScrollAnimations();
   initCarousel();
   initCountUp();
-  initSmoothScroll();
+  initSmoothScroll(navbar);
 });
 
-function initNavbar() {
-  const navbar = document.getElementById('navbar');
+function initNavbar(navbar) {
+  if (!navbar) return;
   let isScrolled = false;
 
   function handleNavbarScroll() {
@@ -67,7 +71,7 @@ function initScrollAnimations() {
 
   const observer = new IntersectionObserver(
     (entries) => {
-      entries.forEach((entry, index) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const delay = entry.target.dataset.delay || 0;
           setTimeout(() => {
@@ -83,9 +87,7 @@ function initScrollAnimations() {
     }
   );
 
-  const grids = document.querySelectorAll(
-    '.diferenciais-grid, .servicos-grid, .aulas-grid, .planos-grid'
-  );
+  const grids = document.querySelectorAll('.diferenciais-grid, .servicos-grid, .aulas-grid, .planos-grid');
 
   grids.forEach(grid => {
     const cards = grid.querySelectorAll('.fade-in');
@@ -213,14 +215,13 @@ function initCountUp() {
 
 function animateCount(element) {
   const target = parseInt(element.dataset.count, 10);
-  const duration = 2000; const startTime = performance.now();
+  const duration = 2000;
+  const startTime = performance.now();
 
   function updateCount(currentTime) {
     const elapsed = currentTime - startTime;
     const progress = Math.min(elapsed / duration, 1);
-
     const easedProgress = 1 - Math.pow(1 - progress, 3);
-
     const currentValue = Math.floor(easedProgress * target);
 
     if (target >= 1000) {
@@ -237,7 +238,7 @@ function animateCount(element) {
   requestAnimationFrame(updateCount);
 }
 
-function initSmoothScroll() {
+function initSmoothScroll(navbar) {
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', (e) => {
       const targetId = link.getAttribute('href');
@@ -248,7 +249,8 @@ function initSmoothScroll() {
 
       e.preventDefault();
 
-      const navbarHeight = document.getElementById('navbar').offsetHeight;
+      // Agora usamos a variável repassada, sem forçar o DOM a buscar o ID novamente
+      const navbarHeight = navbar ? navbar.offsetHeight : 0;
       const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - navbarHeight;
 
       window.scrollTo({
